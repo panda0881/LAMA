@@ -66,11 +66,11 @@ def main(args):
                 filtered_log_probs_list = model.filter_logprobs(original_log_probs_list, filter_logprob_indices)
             else:
                 filtered_log_probs_list = original_log_probs_list
-
+            # print('lalala')
             # rank over the subset of the vocab (if defined) for the SINGLE masked tokens
             if masked_indices and len(masked_indices) > 0:
-                evaluation_metrics.get_ranking(filtered_log_probs_list[0], masked_indices, model.vocab, index_list=index_list)
-            print('lalala')
+                _, _, tmp_result, _ = evaluation_metrics.get_ranking(filtered_log_probs_list[0], masked_indices, model.vocab, index_list=index_list)
+            print(tmp_result)
             # prediction and perplexity for the whole softmax
             print_sentence_predictions(original_log_probs_list[0], token_ids, model.vocab, masked_indices=masked_indices)
 
