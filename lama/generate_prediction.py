@@ -59,7 +59,7 @@ def main(args):
             sentences = sentences[:2]
 
         for model_name, model in models.items():
-            print("\n{}:".format(model_name))
+            # print("\n{}:".format(model_name))
             original_log_probs_list, [token_ids], [masked_indices] = model.get_batch_generation([sentences], try_cuda=False)
 
             index_list = None
