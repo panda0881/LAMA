@@ -9,8 +9,8 @@
 set -e
 set -u
 
-ROOD_DIR="$(realpath $(dirname "$0"))"
-DST_DIR="$ROOD_DIR/pre-trained_language_models"
+# ROOD_DIR="$(realpath $(dirname "$0"))"
+DST_DIR="$/data/hzhangal/pre-trained_language_models"
 
 mkdir -p "$DST_DIR"
 cd "$DST_DIR"
