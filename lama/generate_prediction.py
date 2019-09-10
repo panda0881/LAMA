@@ -22,8 +22,6 @@ def main(args):
     print("Language Models: {}".format(args.models_names))
 
     models = {}
-    print(args.models_names)
-    exit(0)
     for lm in args.models_names:
         models[lm] = build_model_by_name(lm, args)
 
@@ -33,6 +31,7 @@ def main(args):
         print("common vocabulary size: {}".format(len(common_vocab)))
         vocab_subset = [x for x in common_vocab]
 
+    print('Start to predict')
     while stopping_condition:
         if args.text:
             text = args.text
