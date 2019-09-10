@@ -35,7 +35,7 @@ def main(args):
 
     print('Start to predict')
 
-    with open('test_e_sentences.json', 'r') as f:
+    with open('test_sentences.json', 'r') as f:
         test_sentences = json.load(f)
     all_predictions = list()
     for s in tqdm(test_sentences):
