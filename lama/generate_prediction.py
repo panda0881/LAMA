@@ -37,7 +37,7 @@ def main(args):
 
     with open('test_e_sentences.json', 'w') as f:
         test_sentences = json.load(f)
-
+    all_predictions = list()
     for s in tqdm(test_sentences):
         text = s
 
@@ -72,12 +72,16 @@ def main(args):
 
             # rank over the subset of the vocab (if defined) for the SINGLE masked tokens
             if masked_indices and len(masked_indices) > 0:
-                evaluation_metrics.get_ranking(filtered_log_probs_list[0], masked_indices, model.vocab, index_list=index_list)
+                _, _, tmp_result, _ = evaluation_metrics.get_ranking(filtered_log_probs_list[0], masked_indices, model.vocab, index_list=index_list)
+
+                tmp_predictions = tmp_result['topk'][:10]
+                all_predictions.append(tmp_predictions)
 
             # prediction and perplexity for the whole softmax
             print_sentence_predictions(original_log_probs_list[0], token_ids, model.vocab, masked_indices=masked_indices)
 
-
+    with open('test_prediction.json', 'w') as f:
+        json.dump(all_predictions, f)
 
 
 if __name__ == '__main__':
