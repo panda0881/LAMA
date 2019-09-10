@@ -22,6 +22,8 @@ def main(args):
     print("Language Models: {}".format(args.models_names))
 
     models = {}
+    print(args.models_names)
+    exit(0)
     for lm in args.models_names:
         models[lm] = build_model_by_name(lm, args)
 
