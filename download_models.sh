@@ -137,7 +137,7 @@ if [[ ! -f bert/cased_L-24_H-1024_A-16/bert_config.json ]]; then
 fi
 
 
-cd "$ROOD_DIR"
+#cd "$ROOD_DIR"
 echo 'Building common vocab'
 if [ ! -f "$DST_DIR/common_vocab_cased.txt" ]; then
   python lama/vocab_intersection.py

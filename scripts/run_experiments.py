@@ -76,6 +76,16 @@ LMs = [
     }
 ]
 
+selected_LMs = [
+    {
+        "lm": "bert",
+        "label": "bert_large",
+        "models_names": ["bert"],
+        "bert_model_name": "bert-large-cased",
+        "bert_model_dir": "pre-trained_language_models/bert/cased_L-24_H-1024_A-16",
+    }
+]
+
 
 def run_experiments(
     relations,
@@ -204,27 +214,27 @@ def get_Squad_parameters(data_path_pre="data/"):
 
 
 def run_all_LMs(parameters):
-    for ip in LMs:
+    for ip in selected_LMs:
         print(ip["label"])
         run_experiments(*parameters, input_param=ip)
 
 
 if __name__ == "__main__":
 
-    print("1. Google-RE")    
-    parameters = get_GoogleRE_parameters()
-    run_all_LMs(parameters)
-
-    print("2. T-REx")    
-    parameters = get_TREx_parameters()
-    run_all_LMs(parameters)
+    # print("1. Google-RE")
+    # parameters = get_GoogleRE_parameters()
+    # run_all_LMs(parameters)
+    #
+    # print("2. T-REx")
+    # parameters = get_TREx_parameters()
+    # run_all_LMs(parameters)
 
     print("3. ConceptNet")
     parameters = get_ConceptNet_parameters()
     run_all_LMs(parameters)
 
-    print("4. SQuAD")
-    parameters = get_Squad_parameters()
-    run_all_LMs(parameters)
+    # print("4. SQuAD")
+    # parameters = get_Squad_parameters()
+    # run_all_LMs(parameters)
 
     
