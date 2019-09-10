@@ -8,6 +8,8 @@ from lama.modules import build_model_by_name
 from lama.utils import print_sentence_predictions, load_vocab
 import lama.options as options
 import lama.evaluation_metrics as evaluation_metrics
+import ujson as json
+from tqdm import tqdm
 
 
 def main(args):
@@ -32,12 +34,12 @@ def main(args):
         vocab_subset = [x for x in common_vocab]
 
     print('Start to predict')
-    while stopping_condition:
-        if args.text:
-            text = args.text
-            stopping_condition = False
-        else:
-            text = input("insert text:")
+
+    with open('test_e_sentences.json', 'w') as f:
+        test_sentences = json.dump(f)
+
+    for s in tqdm(test_sentences):
+        text = s
 
         if args.split_sentence:
             import spacy
@@ -74,6 +76,8 @@ def main(args):
 
             # prediction and perplexity for the whole softmax
             print_sentence_predictions(original_log_probs_list[0], token_ids, model.vocab, masked_indices=masked_indices)
+
+
 
 
 if __name__ == '__main__':

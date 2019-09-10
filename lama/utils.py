@@ -119,6 +119,8 @@ def print_sentence_predictions(log_probs, token_ids, vocab,
         avg_nll_loss = 0.0
     perplexity = np.exp(avg_nll_loss)
 
+    print('lalala')
+
     # print("positional_scores: {}".format(positional_scores))
     # print("avg_nll_loss: {}".format(avg_nll_loss))
 
