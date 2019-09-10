@@ -35,7 +35,7 @@ def main(args):
 
     print('Start to predict')
 
-    with open('test_sentences.json', 'r') as f:
+    with open('test_e_sentences.json', 'r') as f:
         test_sentences = json.load(f)
     all_predictions = list()
     for s in tqdm(test_sentences):
@@ -80,7 +80,7 @@ def main(args):
             # prediction and perplexity for the whole softmax
             # print_sentence_predictions(original_log_probs_list[0], token_ids, model.vocab, masked_indices=masked_indices)
 
-    with open('test_prediction.json', 'w') as f:
+    with open('test_e_prediction.json', 'w') as f:
         json.dump(all_predictions, f)
 
 
